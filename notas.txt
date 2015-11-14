@@ -1,0 +1,391 @@
+BIEVENIDA
+Iván Martinez
+@ivanmdev @F: Developer Latinoamerica
+github.com/alcance
+ivan@jelp.io
+
+JELP [[Imagen 00-image]]
+jelp.io
+
+
+
+¿Que es AngularJS?  *** VE A 01-BASE
+https://github.com/angular
+
+AngularJS es un framework para Javascript MVC.
+
+AngularJS extiende nuestro HTML con nuevos atributos.
+Se utiliza para crear SPA's
+Es facil de aprender
+
+Su primer version fue lanzada en el 2012
+Misko Hevery. comenzo a trabajar en Angular en el 2009.
+Actualmente Angular es un proyecto oficial de Google.
+
+OTROS PERSONAJES:
+Igor Minar: https://github.com/IgorMinar/
+John Pappa: https://github.com/johnpapa/
+
+
+
+Vocabulario de Angular.
+
+- Personas inteligentes
+- Personas que estudiaron Ciencias de la Computación.
+- Utilizan terminologia cientifica para nombrar y discutir aspectos de Angularj.
+- Puede parecer que es muy dificil de entender pero no realmente.
+- ES SOLO VOCABULARIO
+
+
+¿QUÉ PROBLEMAS RESUELVE ANGULAR? *** ir a 01-base [codigo]
+
+[MOSTRAR CODIGO EJEMPLO BASE] IDEA BASE DEL FRAMEWORK.
+Angular resuelve situacion en el desarrollo web moderno. Web software sentir mas natural, mas fluido. Disminuir la cantidad de trabajo necesaria para crear una app.
+
+- Manejar el DOM y la logica (variables, data).
+- Pasamos mucho tiempo actualizando el DOM. Representacion del HTML en la memoria del navegador.
+- Respondemos a eventos.
+- Actualizamos data.
+- Despues de un tiempo puede convertirse en algo dificil de mantener.
+
+CONCEPTO: MV* (MVC)  ** [[Imagen en 01-base]]
+
+Datos - HTML .
+Queremos conectar ambas.
+
+Model = Data
+View = HTML
+* = Algo que pega el modelo y la vista. THING THING!!
+
+
+*****  CUSTOM ATTRIBUTES  !! IMPORTANTE !!!   02-custom-attrs
+***** GLOBAL NAMESPACE !! IMPORTANTE !!    03-global-namespace
+
+MODULES APPS & CONTROLLERS  **** CODE: 04-module-app-controller
+
+- Agregar AngularJS a nuestro proyecto. (https://code.angularjs.org/1.4.7/)
+- Donde va a vivir la app en la vista. ng-app
+    > Todo los elementos hijos estan controlados por el modulo.
+- Agregar modulo en app.js angular.module
+- Todo estara dentro del namespace 'myApp'
+- Agregar un controlador.
+- Conectar el controlador con la vista.
+- Crear un div con un controlador ng-controller (custom attribute)
+- Identificar Vista y Modelo (esqueleto de una app AngularJS)
+
+**** IR a: 05-dependency-injection
+
+
+DEPENDENCY INJECTION - No esta tan complicado.
+"Darle un objeto a una funcion"
+- En lugar de crear un objeto dentro de una funcion, lo pasas a la funcion.
+
+- Define un objeto en app.js
+- Crea la funcion logPerson que crea un objeto dentro de ella
+- Crea una funcion que recibe un objeto
+
+
+!!! IMPORTANTE !!! EL SERVICIO "SCOPE"
+*** Ir a 04-modules-apps-controllers ****
+
+- Involucra Dependency Injection
+NOTA: Parte de las cosas que pegan el Modelo a la Vista.
+
+- Pasa un objecto a la funcion controller. ($scope)
+- El dolar solo es parte del nombre
+- Logea a la consola $scope.
+- ¿Que vemos? No hemos tenemos la variable scope en el codigo, ni lo hemos llamado. Vacio?
+- Es un objeto complejo lleno de cosas.
+- AngularJS haciendo injeccion de dependencias.
+- Scope es un objeto
+- TODOS LOS SERVICIOS DE ANGULAR COMIENZA CON UN $
+- Angular ve que lo queremos y lo pasa a la funcion
+- Puedes agregar valores al scope.
+- Agrega $scope.place y loggealo
+- Agrega un funcion y logeala $scope.getPlace { return 'Devfest '}
+- Llama la funcion que create
+** PODEMOS AGREGAR VARIBLES Y FUNCIONES AL SCOPE
+- El scope define la data que veremos.
+
+
+
+ *** SKIP *** *** SKIP *** *** SKIP *** *** SKIP ***
+
+¿Que hizo ANGULAR para darnos el scope?
+*** Continuamos con 04-modules-apps-controllers ****
+- Pasamos el scope en nuestra funcion como parametro y aparecio.
+- AngularJS hace cosas que a talvez no comprendemos
+
+  FUNCIONES Y STRINGS EN JAVASCRIPT (04-modules)
+  - Crear un funcion como variable searchPeople con parametros
+  - Loggea la funcion console.log(searchPeople(1,2,3,4,5)) con parametros
+  - Loggea sin parentis searchPeople
+  - Regreso un string (toda la funcion)
+  - Crear variable searchPeopleString = searchPeople.toString()
+  - Podemos tomar una funcion en Javascript y convertirla a un string.
+
+  SI PODEMOS REPRESENTAR UN FUNCION EN UN STRING PODEMOS PARTIR LA FUNCION
+  Y BUSCAR LOS PARAMETROS QUE ESPERA LA FUNCION.
+  PODEMOS TOMAR UN DECISION BASADO EN LO QUE VEO.
+
+
+¿COMO ANGULAR HACE INYECCION DE DEPENDENCIAS?
+** continuamos en 04-modules-apps-controllers
+- El fetaure injecto podemos parsear un string y crear un array . con cada uno de los parametros que la funcion espera
+
+ console.log(angular.injector().annotate(searchPeople));
+
+
+
+*** Por eso ANGULAR DETECTA SCOPE EN NUESTRO CONTROLADOR
+   --- Logea scope en controlador. Simplemente ponlo en la lista.
+   --- Nos ahorra mucho tiempo, es codigo mas estable y mantenible.
+   --- Es una buena estructura que sigue Angular.
+
+ *** SKIP *** *** SKIP *** *** SKIP *** *** SKIP *** *** SKIP *** *** SKIP *** *** SKIP *** *** SKIP *** *** SKIP *** *** SKIP *** *** SKIP *** *** SKIP ***
+
+
+
+
+COMO OBTENER OTROS SERVICIOS
+*** $log en contorller de 04-MODULES-APp
+Go to: https://code.angularjs.org/1.4.7/angular.js
+-- Ver donde estan los servicios
+$log, $http
+- Tambien puedes ir a la API REFERENCE
+
+https://docs.angularjs.org/api/ng/service/$log
+-- Es console.log pero creado para Angular
+
+- Agrega $log con DI.
+- Logea $log (otro objeto)
+- $log.debug $log.warn, etc
+
+- Usar el servicio $filter (DI)
+- Poner un valor en scope.
+- Crear en scope formatted name
+
+Usa un servicio , si angular ya lo tiene.
+
+DEMO NG MESSAGES
+- Obtener modulo https://code.angularjs.org/1.4.7/angular-messages.js
+- Todo esta nombrados ngAlgo
+- Obtener la version minificada
+- Incluirlo en index para que este disponible pero no inmediatamente.
+- Dile a Angular que quieres el modulo.
+- Inyectarlo al array de dependencias del modulo
+- Hace form validation
+
+DEMO NG RESOURCE
+ - Obtener: https://code.angularjs.org/1.4.7/angular-resource.js
+ - Agregarlo al index
+ - Agregar ngResource en dependencia de modulo
+ - Logea $resource
+ - Trata de usarlo sin inyectarlo en el modulo
+
+VISITAR: http://ngmodules.org/
+ - Existen mucho modulos y servicios.
+  < Tables, grids.
+  - Referenciarlo y usarlo.
+
+
+DEPENDENCY AND MINIFICATION. Hacer mas pequeño el archivo. min.js
+- Minifica pedazo de codigo: http://javascript-minifier.com/
+- Copia el codigo en app.js
+- Rompio DI
+
+** Go to: 06-scope-interpolation
+- Minifica con codigo []
+- No cambia los valores del []
+- Solo veo los elementos del array y lo paso a la posicion de la funcion
+- Cambia los parametros de la funcion y loggea $scope (toma el valor de $log)
+
+
+SCOPE AN INTERPOLATION
+** 06-scope-interopolation
+
+Interpolation: Crear un string combinando strings y placeholders
+'My name is' + name es interpolado y lo resuelve a My name is Ivan
+
+-Podemos agregar variables al scope y es disponible a nuestra vista.
+- Utiliza {{ }} en la vista
+- Scope es el pegamento entre el controlador y la vista
+- Inyecta el servicio $timeout a app.js
+- Despues de 3000 cambia el $scope.name
+
+
+
+DIRECTIVES Y TWO WAY DATA BINDING
+Directiva: Instruccion a AngularJS para manipular un pedazo del DOM
+ -- Agregar una clase, esconder un elemento, crear, etc
+
+ Probablemente haya manipulado manualmente lo que pasa en el DOM
+ - Webpage on the fly con Javascript
+ - AngularJS prefiere usar directiva
+ - Diriges que haces en el DOM
+
+
+*** Go to: 07-directives
+- Agregar input de Twitter handler
+- Agregar tu directiva  en el input ng-model en input
+- Modelo estar bindeado al una propiedad al scope. $scope.handle
+- Ve el scope y agrega ese valor al modelo. (Two way binding)
+- Lo que pasa alla pasa aca.
+- Usa interpolacion y haz output del modelo {{ handle }}
+- Angular sabe donde se actualizo y no tenemos que hacer nada.
+
+** Pon un filtro  en 07-directives app.js
+- Inyecta $filter service a handle
+- Crea una funcion lowerClasehandle = function(){ return $filter('lowercase')($scope.handle);}
+- Interpolar la funcion en la vista {{ lowercaseHandle() }}
+- Two way data binding se encargo de todo.
+
+
+REGRESEMOS A MV*
+
+[[ Imagen]] 07-MVW-2
+
+EVENT LOOP EN JAVASCRIPT
+Javascript espera por un evento que suceda para responder.
+CAda vez que se dispara un evento.
+Debes estar escuchando
+
+WATCHERS Y DIGEST LOOP
+
+[[ Imagen ]] Watcher and angular Context
+- Angular agregar listeners por nosotros.
+- Lo extiende
+
+Context: Todo lo que es la apliacion de Angularjs
+Angular sabra que debe llevar registro de esos valores. Watch list.
+Cada vez que lo pones en tu HTML. Angular agrega un watcher
+Valor original - Nuevo valor.
+Cada vez que pasa un evento, Angular ve si esto cambio.
+- Esta parte esta en un loop (Digest loop) ciclo. 1 revolucion
+ ¿Cambio algo? y compara el valor viejo con el nuevo valor.
+ Todo lo del DOM afecta y en el codigo. Y despues corre otro ciclo.
+ Hasta que todos los valores sean iguales.
+
+** DEMO Agregar un watch cada vez que cambie scope.handle 'handle' en app.js 07-directive.js
+** PROBLEMA: AGREGAR VALORES FUERA DEL CONTEXTO DE ANGULAR agregar.
+
+
+COMMON DIRECTIVES
+Directivas que estan built-in en AngularJS.
+
+** seguimos en 07-directives.
+
+Queremos que nuestro handle sea 5 characteres
+- Agregar un div class="alert 'Must be 5 chars'
+- Usa ng-if="expresion" (todo lo que regrese true or false)
+- Agregar $scope.characters
+- Usa ng-hide en lugar de ng-if (diplay: none !important)
+
+- ng-class="{'alert-warning': handle.length < characters }" se quitara
+- puedes hacer los ng class que quieras
+- Nested directives ng-show  less than 5 chars
+- More than 5 chars
+
+
+
+NG REPEAT --
+
+  ** seguimos en 07-directives
+
+ - Crear array $scope.rules Javascript Objects
+ - Agregar ng-repeat en la vista (for in)
+ - rule = [0], [1] ...
+
+ *** Repasar directivas que vimos en index.html
+
+ OTRAS DIRECTIVAS
+- Agregar directiva ng-click
+- Agregar funcion alertClick()
+- ng-clock. Esconde el elemento del DOM hasta que se hace la interpolacion
+
+Puedes ir a AngularJS > API REFERENCE -- DIRECTIVE
+  https://docs.angularjs.org/api/ng/directive
+
+
+OBTENER REGLAS DESDE PARSE !!!! REGLAS DESDE PARSE
+Mostrar API en Parse
+
+XMLHTTPRequest Object- Wrapper $http service
+rulesRequest = new XMLHttpRequest() Hacer peticion desde el codigo.
+Estandar y parte de Javascript
+** Es algo complejo de usar por eso tiene wrapper $http
+Method: GET , POST, (https://developer.mozilla.org/es/docs/XMLHttpRequest)
+
+EXTENRAL DATA
+- Como usar datos externos a la manera de Angular.
+- Obtner y mandar datos
+
+- Inyecta $http service a app.js
+- Usa el objeto $http.get()
+- Darle URL de API
+- Metodos: success, error
+- pasa objetos al request despues del la url
+ (recibe 2 parametros ) $http.post('https://api.parse.com/1/classes/Rules', {headers:{}},)
+
+ HACER POST A PARSE
+
+ - Agregar en index agregar regla input y boton addRule():
+ - Crear $scope.addRule = function() en app.js
+ - Agregar objeto .post 3 parametros y hacer push a $scope.results
+
+
+
+ SPA'S (cada controlador tiene su scope)
+ - Ejemplo de Bookmark <a href="#bookmark"></a> *** 08-bookmark
+ - Evento haschange (cuando el hash cambia) podemos ver el cambio del hash
+
+   window.addEventListener('haschange', function(){
+
+   console.log('has changed', window.location.hash)
+
+   })
+
+   - Click en bookmark
+   - Agregar if window.location.hash ==== '#/bookmark/1'
+
+
+ROUTING TEMPLATES AND CONTROLLER  *** 09-routing-templates-controllers
+
+- Inyectar $location service
+- Log: $location.path();
+- Tomar angular-route.js. Nos ayudara a crear SPA's
+- Rutea lo que esta en el hash y corre codigo.
+- Provee diversos elementso como $routeProvider
+- Agregar angular-route.js bajo angular.js
+- Agregar dependecia en modulo myApp app.js
+- myApp.config pasa $routeProvider.
+- Agrega .when.
+- Agregar template url, controller
+- Agrega ng-view en index.html container
+**** CHECAR NETWORK EN CONSOLA
+
+- Agregar scopes en los controladores para bindear las rutas
+
+- DARLE A UNA PAGINA UN VALOR /second/:num
+- Inyectar $routeParams
+
+
+
+CUSTOME SERVICES
+[ Imagen 09-singletons]*** Seguimos en 09-routing-template
+
+- Singletons: La unica copia de un objeto.
+   Caudno lo pides no recibes una copia , recibe el mismo en todas partes.
+
+- $log es un singleton. Agrega una propiedad a $log. $log.main
+- AGregar prpiedad $log.second en segund controller
+- Log $log
+- Solo hay un objeto valido. Solo necesitas uno.
+- GUARDAR MEMORIA
+
+CREAR UN SERVICIO. (Tu propio singleton para compartir en tu SPA)
+*** Seguimos en 09-routing-template
+- Crear servicio myApp.service 'nameService'
+- AGregar servicio en contolador mainController
+    $log.log(nameService.name)
+    $log.log(nameService.namelengt)h

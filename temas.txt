@@ -1,0 +1,60 @@
+=== DEV FEST 2015 ===
+     ANGULAR JS
+    Ivan Martinez
+==== + + + + + + ====
+
+OBJETIVO: Comprender los conceptos fundamentales de AngularJS necesarios para
+crear SPA's (Single Page App) escalables, modulares y mantenibles.
+
+Estos conceptos no se veran necesariamente en orden ya que se iran explicando
+conforme se crea un aplicación básica.
+
+
+I.BIENVENIDA
+1. Mi background
+2. Sobre JELP
+
+II. INTRODUCCIÓN
+[Mostrar Glosario]
+1. Sobre Angular
+2. Terminologia en Angular.
+3. ¿Qué problemas trata de resolver?
+
+III. CONCEPTOS BASICOS
+[Creación de un controlador básico que consuma un Servicio]
+1. MV* (Whatever)
+2. Atributos personalizados.
+3. Modulos, apps y controladores.
+4. Inyeccion de depedencias.
+
+IV. FILTROS
+
+V. CUSTOM SERVICES
+[Creación de servicio para consumir un API]
+1. Singletones
+2. Creación de Servicios
+3. Servicio Scope
+4. Servicio $resource
+
+VI. Directivas
+[Creación de directiva para cambiar apariencia de elemento del DOM]
+1. Conceptos basicos
+2. Demo directiva (muestra de codigo)
+
+VII. RUTAS
+
+VIII. BONUS/DESPEDIDA
+2. Libros de Javascript recomendados.
+3. Invitación a descargar Jelp/grupo Developers LaTam (auto promo).
+
+
+IX
+X
+XI
+XII
+XIII
+
+
+
+
+
